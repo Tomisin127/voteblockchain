@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1560959396 source:c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\main.cpp
+	<windows.h>
+	<stdlib.h>
+	"all_headers.h"
+
+1560330550 c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\all_headers.h
+	<iostream>
+	<cmath>
+	<cstdlib>
+	<Vector>
+	<ctime>
+	<fstream>
+	<cctype>
+	<map>
+	"sha256.h"
+	<iterator>
+	<functional>
+	<string>
+	<cstring>
+	"voter_data.h"
+	"vote_block.h"
+	"vote_block_chain.h"
+	"all_functions.h"
+	"commctrl.h"
+	<sstream>
+
+1560300247 c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\voter_data.h
+
+1275121040 c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\vote_block.h
+
+1560329382 c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\vote_block_chain.h
+
+1560301702 c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\all_functions.h
+
+1560102518 c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\sha256.h
+	<stdint.h>
+	<stdlib.h>
+	<string>
+
+1560110956 c:\users\object\desktop\gui_vote_application\real_vote_application\vote_x\resources\resource.h
+
