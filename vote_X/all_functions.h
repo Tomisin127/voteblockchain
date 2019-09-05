@@ -1,8 +1,9 @@
-#ifndef ALL_FUNCTIONS_H_
-#define ALL_FUNCTIONS_H_
+
 //ALL FUNCTIONS HERE
 
 // creating the functions and constructor
+
+//accepts the voting index, the vote data and the previous hash of the previous vote
 VoteBlock::VoteBlock(int idx, VoterData d , size_t prevHash)
 {
 	index = idx ;
@@ -14,17 +15,15 @@ VoteBlock::VoteBlock(int idx, VoterData d , size_t prevHash)
 // private functions
 size_t VoteBlock::generateHash(){
 
-
 	//creating string of transaction data
-	string toHashS = to_string(data.age) + data.candidate +data.firstname +data.lastname + to_string(data.timestamp);
+	string toHashS = to_string(data.age) + data.candidate +data.firstname +data.lastname +to_string(data.timestamp);
 
 	//2 hashes to combine
 	hash<string> tDataHash;// hashes transaction data string
 	hash<string> prevHash;// re-hashes previous hash(for combination)
 
 	//combine hashes and get size_t for block hash
-//SHA256D64(unsigned char* output, const unsigned char* input, size_t blocks);
-    //return SHA256D64(toHashS,toHashS,1024);
+
 	return tDataHash(toHashS) ^ (prevHash(to_string(previousHash)) << 1);
 };
 
@@ -55,6 +54,7 @@ bool VoteBlock::isHashValid()
 
 int VoteBlockChain::candidate_vote_count(VoterData &t)
 	{
+
 	 	if (t.candidate==candidate1)
 	 	{
 	 		first_candidate_count +=1;
@@ -93,21 +93,6 @@ void VoteBlockChain::read_bio_information()
 			}
 
 	}
-//store the names of each voter
-//void VoteBlockChain::store_bio_information(const VoterData &d)
-//		{
-//			int i =0;
-//			map<int,string>::iterator pt;
-
-//			map<int,string>name;
-			//make_pair(1, "r");
-			//name.insert({i+1, d.firstname});
-
-			//map<int,string>voter_name(name.begin(),name.end());
-
-			//oter_name_store = voter_name;
-
-//		}
 
 //print info in the block
 void VoteBlockChain::print_chain()
@@ -166,10 +151,10 @@ VoteBlock VoteBlockChain::CreateGenesisBlock()
 	hash<string> tDataHash;// hashes voter data string
 	hash<string>prevHash;// rehashes previous hash(for combination)
 
-	size_t hash = tDataHash(toHashS) ^ (prevHash(to_string(0)) <<1);
+	size_t Hash = tDataHash(toHashS) ^ (prevHash(to_string(0)) <<1);
 	//geneis block doesnt contain anything yet
 
-	VoteBlock genesis(0, d, hash);
+	VoteBlock genesis(0, d, Hash);
 
 	return genesis;
 
@@ -199,8 +184,8 @@ void VoteBlockChain::addBlock(VoterData d)
 	size_t previousHash = (int)chain.size() >0 ? getlatestblock()->getHash() : 0;
 
 
-	//if (d.age >=1 and is_able_to_addblock==true)
-	//{
+	if (d.age >=18 and is_able_to_addblock==true)
+	{
 		VoteBlock newBlock(index, d, previousHash);
 
 		chain.push_back(newBlock);
@@ -211,17 +196,16 @@ void VoteBlockChain::addBlock(VoterData d)
 
 		//cout << "size of the map :" << voter_name_store.size() <<endl;
 
-		//for (dt= voter_name_store.begin(); dt!=voter_name_store.end(); ++dt)
-		//{
+		for (dt= voter_name_store.begin(); dt!=voter_name_store.end(); ++dt)
+		{
 
-		//}
-	//}
-
-	//else
-	//{
-		//is_able_to_addblock=false;
-		//cout << "THIS VOTER IS UNDER-AGED" << endl;
-	//}
+		}
+	}
+	else
+	{
+		is_able_to_addblock=false;
+		cout << "THIS VOTER IS UNDER-AGED" << endl;
+	}
 	//cout << "chain length : " << chain.size() <<endl;
 }
 
@@ -267,4 +251,3 @@ void VoteBlockChain::print_vote_count()const
 	cout << "second candidate vote count is : " << second_candidate_count <<endl;
 }
 
-#endif // ALL_FUNCTIONS_H_

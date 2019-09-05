@@ -1,20 +1,18 @@
 
-#ifndef VOTE_DATA_H_
-#define VOTE_DATA_H_
-
 using namespace std;
+
 struct VoterData{
 
 
 	string firstname;
 	string lastname;
 	time_t timestamp;
-	int age;
+	double age;
 	string candidate;
 
 	VoterData(){};
 
-	VoterData(string first , string last, time_t time, int ag, string cand )
+	VoterData(string first , string last, time_t time, double ag, string cand )
 	{
 		firstname = first;
 		lastname = last;
@@ -27,4 +25,3 @@ struct VoterData{
 
 
 
-#endif // VOTE_DATA_H_

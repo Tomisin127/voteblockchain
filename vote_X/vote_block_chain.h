@@ -7,11 +7,11 @@
 class VoteBlockChain{
 
 	private:
+	    //initial block of the blockchain
 		VoteBlock CreateGenesisBlock();
 
+		//the chain that holds the vote
 		vector<VoteBlock> chain;
-
-
 
 		int total_vote_count=0;
 
@@ -27,7 +27,9 @@ class VoteBlockChain{
 
 		bool is_able_to_addblock=false;
 
-		map<int,string>voter_name_store;
+		map<int,string>first_candidate_name_store;
+
+        map<int,string>second_candidate_name_store;
 
 	public:
 
@@ -60,5 +62,4 @@ class VoteBlockChain{
 	//friend ostream & operator<<(ostream &gout , const int &);
 
 };
-
 #endif
